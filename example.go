@@ -2,24 +2,36 @@ package main
 
 import (
 	"fmt"
-	"math"
+	"os"
+	"strconv"
+
+	"github.com/Pallinder/go-randomdata"
 )
 
 func main() {
 	fmt.Print("Hello World\n")
 
-	fmt.Println(investmentCalculator(1000,5.5,10))
+	// var x int
+	// y := 7
+	// fmt.Scan(&x)
 
-	y := 7
-	x := 5
+	// var result = x + y
 
+	// if result < 10 {
+	// 	fmt.Println("Too Small!")
+	// } else {
+	// 	fmt.Println("That works!")
+	// }
 
-	fmt.Println(x+y)
+	// for i := x; i > 0; i-- {
+	// 	fmt.Println(i)
+	// }
 
+	var number = 12
+	os.WriteFile("output.txt", []byte(strconv.Itoa(number)+"\n"), 0644)
 
-}
+	investmentCalculator(1000, 2.5, 30)
 
-func investmentCalculator(amount float64, rate float64, years int) float64{
-	var futureValue = amount * math.Pow(1+rate/100,float64(years))
-	return futureValue
+	fmt.Println(randomdata.ProvinceForCountry("FR"))
+
 }
