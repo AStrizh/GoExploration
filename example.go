@@ -1,37 +1,16 @@
 package main
 
 import (
-	"fmt"
-	"os"
-	"strconv"
+	"github.com/AStrizh/GoExploration/example/prices"
 
-	"github.com/Pallinder/go-randomdata"
 )
 
 func main() {
-	fmt.Print("Hello World\n")
 
-	// var x int
-	// y := 7
-	// fmt.Scan(&x)
+	taxRates := []float64{0, 0.07, 0.1, 0.15}
 
-	// var result = x + y
-
-	// if result < 10 {
-	// 	fmt.Println("Too Small!")
-	// } else {
-	// 	fmt.Println("That works!")
-	// }
-
-	// for i := x; i > 0; i-- {
-	// 	fmt.Println(i)
-	// }
-
-	var number = 12
-	os.WriteFile("output.txt", []byte(strconv.Itoa(number)+"\n"), 0644)
-
-	investmentCalculator(1000, 2.5, 30)
-
-	fmt.Println(randomdata.ProvinceForCountry("FR"))
-
+	for _, taxRate := range taxRates {
+		priceJob := prices.NewTaxIncludedPriceJob(taxRate)
+		priceJob.Process()
+	}
 }
