@@ -1,16 +1,19 @@
 package main
 
 import (
-	"github.com/AStrizh/GoExploration/example/prices"
+	"net/http"
 
+	"github.com/gin-gonic/gin"
 )
 
 func main() {
+	server := gin.Default()
 
-	taxRates := []float64{0, 0.07, 0.1, 0.15}
+	server.GET("/events", getEvents)	
+	//localhost 8080
+	server.Run(":8080")
+}
 
-	for _, taxRate := range taxRates {
-		priceJob := prices.NewTaxIncludedPriceJob(taxRate)
-		priceJob.Process()
-	}
+func getEvents(context *gin.Context) {
+	context.JSON(http.StatusOK,gin.H{"message":"Hello!"})
 }
